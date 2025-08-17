@@ -1,0 +1,44 @@
+name: Build html2app Package
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:   # চাইলে ম্যানুয়ালি রান করা যাবে
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # ✅ কোড ডাউনলোড
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # ✅ Node.js সেটআপ (npm run build এর জন্য দরকার)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # ✅ Dependencies ইন্সটল
+      - name: Install dependencies
+        run: npm install
+
+      # ✅ ওয়েব অ্যাসেট বিল্ড (www/ ফোল্ডার তৈরি হবে)
+      - name: Build web assets
+        run: npm run build
+
+      # ✅ app.zip তৈরি করা
+      - name: Create app.zip
+        run: zip -r app.zip www assets config.json
+
+      # ✅ app.zip আপলোড (Artifacts এ পাওয়া যাবে)
+      - name: Upload app.zip
+        uses: actions/upload-artifact@v3
+        with:
+          name: app.zip
+          path: app.zip
+
+      # ✅ শেষে html2app.dev লিঙ্ক দেখানো (কপি করে খুলতে হবে)
+      - name: Show Upload Link
+        run: echo "👉 Upload this app.zip to https://html2app.dev/ to generate APK"
