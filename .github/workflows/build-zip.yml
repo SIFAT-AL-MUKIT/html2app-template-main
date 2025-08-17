@@ -34,7 +34,7 @@ jobs:
 
       # ✅ app.zip আপলোড (Artifacts এ পাওয়া যাবে)
       - name: Upload app.zip
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: app.zip
           path: app.zip
