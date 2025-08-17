@@ -1,0 +1,42 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+  <title>Image Generator</title>  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />  
+  <link rel="stylesheet" href="style.css" />  
+</head>  
+<body>  
+  <h1>Image Generator</h1>  
+  
+  <!-- Prompt Input -->  
+  <div class="input-wrapper">  
+    <textarea  
+      id="prompt-input"  
+      placeholder="Describe the image you want to generate..."  
+      autocomplete="off"  
+      spellcheck="false"  
+      rows="1"  
+    ></textarea>  
+    <button id="prompt-upscale-btn">Enhance prompt</button>  
+  </div>  
+  
+  <!-- Loader Text -->  
+  <div id="status-text"></div>  
+  
+  <!-- Image Preview -->  
+  <div id="image-container"></div>  
+  
+  <!-- Generate Button -->  
+  <button id="generate-btn">Generate Image</button>  
+  
+  <!-- Generated Images History -->  
+  <section id="history-section">  
+    <h2> Generated Images</h2>  
+    <div id="history-grid"></div>  
+  </section>  
+  
+  <script type="module" src="js/main.js"></script>  
+</body>  
+    </html>
